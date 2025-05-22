@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+  <div class="login-box">
+    <h2>Welcome to AI Biography!</h2>
+    <p>Please login!</p>
+    <a href="{% url 'login' %}"><button>Login</button></a>
+    <br></br>
+    <p>No Account?</p>
+    <a href="{% url 'register' %}"><button>Signup</button></a>
+  </div>
+
+
+  <div class="toast-container" id="toast-container"></div>
+
+    <script>
+        {% if messages %}
+        {% for message in messages %}
+        const toast = document.createElement('div');
+        toast.className = 'toast toast-{{ message.tags }}';
+        toast.textContent = "{{ message|escapejs }}";
+        document.getElementById('toast-container').appendChild(toast);
+
+        setTimeout(() => {
+            toast.classList.add('fade-out');
+            setTimeout(() => toast.remove(), 500);
+        }, 3000);
+        {% endfor %}
+        {% endif %}
+    </script>
+
+  
+</body>
+</html>

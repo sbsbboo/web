@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>forget</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+    <div class="register-box">
+        <h2>Forget-Password</h2>
+        <form method="POST" action="{% url 'forgetpwd' %}">
+            {% csrf_token %}
+
+            <div class="form-group">
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+
+            <button type="submit" class="register-btn">Submit</button>
+        </form>
+    </div>
+
+    </div>

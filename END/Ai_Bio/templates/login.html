@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}" />
+</head>
+
+<body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      {{ form.username }}
+      {{ form.password }}
+      <a href="{% url 'forgetpwd' %}" class="forgot">Forgot Password?</a>
+      <button type="submit">Login</button>
+      <br><br>
+      <p class="signup-text">
+        Not a member? <a href="{% url 'register' %}" style="text-decoration:none;">Signup</a>
+      </p>
+    </form>
+  </div>
+</body>
+
+
+
+</html>
